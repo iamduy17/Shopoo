@@ -1,14 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataCommon.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace Backend.DBContext
+namespace Backend.Data
 {
     public class DBContext : DbContext
     {
-        public DBContext(DbContextOptions<DbContext> options) : base(options)
+        public DBContext(DbContextOptions<DBContext> options) : base(options)
         {
 
         }
 
-       
+        public DbSet<Category> Categories { get; set; } = null!;
+        public DbSet<Product> Products { get; set; } = null!;
     }
 }

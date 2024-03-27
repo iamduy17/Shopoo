@@ -1,4 +1,5 @@
-using Backend.DBContext;
+using Backend.Data;
+using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<CategoryService>();
 builder.Services.AddDbContext<DBContext>(opt => opt.UseSqlServer(
     builder.Configuration.GetConnectionString("AppDB")
 ));
