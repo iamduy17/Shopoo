@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataCommon.Request;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,24 @@ namespace DataCommon.Entities
         public string? CreatedDate { get; set; }
         public string? UpdatedDate { get; set; }
         public Guid CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
+
+        public Product()
+        {
+
+        }
+
+        public Product(ProductRequestModel product, Category category)
+        {
+            Id = product.Id;
+            Name = product.Name;
+            Description = product.Description;
+            Price = product.Price;
+            ImageURL = product.ImageURL;
+            CreatedDate = product.CreatedDate;
+            UpdatedDate = product.UpdatedDate;
+            CategoryId = product.CategoryId;
+            Category = category;
+        }
     }
 }

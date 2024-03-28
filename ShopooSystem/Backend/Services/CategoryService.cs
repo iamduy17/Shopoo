@@ -14,6 +14,7 @@ namespace Backend.Services
             _context = context;
         }
 
+        // Get all categories
         public async Task<ResponseModel<List<Category>>> GetCategories()
         {
             try
@@ -27,6 +28,7 @@ namespace Backend.Services
             }
         }
 
+        // Get detail information of one category
         public async Task<ResponseModel<Category>> GetCategory(Guid id)
         {
             try
@@ -46,6 +48,7 @@ namespace Backend.Services
             }
         }
 
+        // Add new category
         public async Task<ResponseModel<Category>> PostCategory(Category category)
         {
             try
@@ -61,6 +64,7 @@ namespace Backend.Services
             }
         }
 
+        // Edit information of category
         public async Task<ResponseModel<Category>> PutCategory(Guid id, Category category)
         {
             try
@@ -89,6 +93,7 @@ namespace Backend.Services
             }
         }
 
+        // Delete category. This API will delete all related products associated with deleted category
         public async Task<ResponseModel<Category>> DeleteCategory(Guid id)
         {
             try
@@ -99,7 +104,7 @@ namespace Backend.Services
                     return ResponseModel<Category>.NotFound();
                 }
 
-                _context.Categories.Remove(category);
+                _context.Categories.Remove(category); 
                 await _context.SaveChangesAsync();
 
                 return ResponseModel<Category>.Success();
