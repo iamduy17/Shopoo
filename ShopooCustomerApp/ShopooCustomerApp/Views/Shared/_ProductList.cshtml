@@ -1,0 +1,19 @@
+﻿<!-- _ProductList.cshtml -->
+@model List<DataCommon.Entities.Product>
+
+@if(Model != null) {
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="@product.ImageURL" alt="@product.Name">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <p class="card-text">Price: @product.Price</p>
+                    <p class="card-text">Rating: @product.RatingPoint</p>
+                    <a href="@Url.Action("Detail", "Product", new { id = product.Id })">View Details</a>
+                </div>
+            </div>
+        </div>
+    }
+}

@@ -1,0 +1,52 @@
+﻿@using ShopooCustomerApp.Models
+@model IndexViewModel
+
+<div class="container mt-3">
+    <div class="row">
+        <section class="col-3">
+            @await Component.InvokeAsync("Category")
+        </section>
+        <section class="col-9">
+            <div id="productsList" class="row">
+                @await Html.PartialAsync("_ProductList", Model?.Products)
+            </div>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // JavaScript to handle category selection and product loading
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryItems = document.querySelectorAll('.category-item');
+            const productsList = document.getElementById('productsList');
+
+                // Attach event listeners to each category item
+            categoryItems.forEach(categoryItem => {
+                categoryItem.addEventListener('click', function () {
+                    const categoryId = this.dataset.categoryId;
+
+                    if(categoryId == "") {
+                        loadAllProducts();
+                    } else {
+                        loadProductsByCategory(categoryId);
+                    }
+                });
+            });
+
+            function loadAllProducts() {
+                fetch('/Product/GetAllProducts')
+                    .then(response => response.text())
+                    .then(data => productsList.innerHTML = data)
+                    .catch(error => console.error('Error loading all products:', error));
+            }
+
+            function loadProductsByCategory(categoryId) {
+                fetch(`/Product/GetProductsByCategory?categoryId=${categoryId}`)
+                    .then(response => response.text())
+                    .then(data => productsList.innerHTML = data)
+                    .catch(error => console.error('Error loading products by category:', error));
+            }
+        });
+    </script>
+}
