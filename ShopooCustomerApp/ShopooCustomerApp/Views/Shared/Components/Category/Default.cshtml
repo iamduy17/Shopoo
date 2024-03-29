@@ -1,15 +1,15 @@
 ﻿@model List<DataCommon.Entities.Category>
 
-<h2>Categories</h2>
-<ul id="categoryList">
-    <li class="category-item" data-category-id="">
-        All Categories
+<h5 class="text-warning ml-3">Categories</h5>
+<ul id="categoryList" class="list-group mb-3">
+    <li class="category-item list-group-item" id="category-all" data-category-id="">
+        All
     </li>
     @if (Model != null)
     {
         @foreach (var category in Model)
         {
-            <li class="category-item" data-category-id="@category?.Id">
+            <li class="category-item list-group-item" data-category-id="@category?.Id">
                 @category?.Name
             </li>
         }

@@ -18,21 +18,40 @@
     <script>
         // JavaScript to handle category selection and product loading
         document.addEventListener('DOMContentLoaded', function () {
+            const categoryAllItem = document.getElementById('category-all');
             const categoryItems = document.querySelectorAll('.category-item');
             const productsList = document.getElementById('productsList');
 
-                // Attach event listeners to each category item
-            categoryItems.forEach(categoryItem => {
-                categoryItem.addEventListener('click', function () {
-                    const categoryId = this.dataset.categoryId;
+            // Set default active for item All Category and load all products at first
+            categoryAllItem.classList.add('active');
+            loadAllProducts();
 
-                    if(categoryId == "") {
-                        loadAllProducts();
-                    } else {
-                        loadProductsByCategory(categoryId);
-                    }
-                });
+            // Attach event listeners to each category item
+            categoryItems.forEach(categoryItem => {
+                categoryItem.addEventListener('click', updateAndCallAPI);
             });
+
+            function updateAndCallAPI(event) {
+                // Add class active
+                clearAllActiveClass();
+                event.target.classList.add('active');
+
+                // Call API with categoryID to load related products
+                const categoryId = event.target.dataset.categoryId;
+
+                if (categoryId == "") {
+                    loadAllProducts();
+                } else {
+                    loadProductsByCategory(categoryId);
+                }
+            }
+
+            function clearAllActiveClass() {
+                for (i = 0; i < categoryItems.length; i++) {
+                    // Remove the class 'active' if it exists
+                    categoryItems[i].classList.remove('active')
+                }
+            }
 
             function loadAllProducts() {
                 fetch('/Product/GetAllProducts')

@@ -4,14 +4,14 @@
 @if(Model != null) {
     @foreach (var product in Model)
     {
-        <div class="col-md-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 ml-2">
             <div class="card">
                 <img class="card-img-top" src="@product.ImageURL" alt="@product.Name">
                 <div class="card-body">
                     <h5 class="card-title">@product.Name</h5>
                     <p class="card-text">Price: @product.Price</p>
                     <p class="card-text">Rating: @product.RatingPoint</p>
-                    <a href="@Url.Action("Detail", "Product", new { id = product.Id })">View Details</a>
+                    <a href="@Url.Action("Detail", "Product", new { id = product.Id })"class="btn btn-primary">Detail</a>
                 </div>
             </div>
         </div>

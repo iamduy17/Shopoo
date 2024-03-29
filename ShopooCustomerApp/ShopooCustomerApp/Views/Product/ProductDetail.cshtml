@@ -1,9 +1,27 @@
 ﻿@model DataCommon.Entities.Product
 
-<h2>Product Details</h2>
-<div>
-    <h3>@Model?.Name</h3>
-    <p>Price: @Model?.Price</p>
-    <p>Rating: @Model?.RatingPoint</p>
-    <!-- Add more details here -->
-</div>  
+<div class="container mt-5">
+    @if(Model != null) {
+        <div class="d-flex justify-content-start align-items-center">
+            <a type="button" class="button gg-arrow-left mr-2" asp-area="" asp-controller="Home" asp-action="Index"></a>
+            <h2 class="fw-bold text-primary">Product Details</h2>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <img src="@Model.ImageURL" alt="@Model.Name" class="img-fluid w-100">
+            </div>
+            <div class=" col-sm-12 col-md-6">
+                <h3 class="fw-bold">@Model.Name</h3>
+                <p style="font-size: 2em;">@Model.Price</p>
+                <p>Category: @Model.Category?.Name</p>
+                <p>Rating: @Model.RatingPoint</p>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 ml-3">
+                    <h4>Description</h4>
+                    <p>@Model.Description</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>
