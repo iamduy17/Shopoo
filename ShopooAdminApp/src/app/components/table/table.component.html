@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="table-wrap panel" [ngStyle]="{ 'padding-bottom': isShowPaginator ? '50px' : 'unset'}" > 
+      <table mat-table [dataSource]="data" matSort [style.width.px]="tableWidth">
+        <ng-container [matColumnDef]="column.property" *ngFor="let column of Header" [sticky]="canSticky">
+          <th mat-header-cell *matHeaderCellDef [style.width.px]="column.length" style="border-bottom: 0 !important" >
+            <label mat-sort-header>{{column.headerText}} </label>
+          </th>
+  
+          <td mat-cell *matCellDef="let row" [style.width.px]="column.length"
+            [ngClass]="{'align-right': column.align == 1,'align-center': column.align == 2}"
+            [style]="cellStyle(column,row)">
+            <button class="cell-click"  mat-button *ngIf='column.onClick' (click)="cellClick(column,row)"
+              [ngClass]="{'align-right': column.align == 1,'align-center': column.align == 2, 'align-left': 3}"
+              style="overflow-wrap: anywhere !important; white-space: normal; user-select: auto; padding: 0!important"
+              >
+              {{formatValue(column.format,row[column.property])}}
+            </button>
+            <span *ngIf='!column.onClick' style="overflow-wrap: anywhere;">{{formatValue(column.format,row[column.property])}}</span>
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" class="fade-in" style="animation-duration: 0.2s;"></tr>
+      </table>
+      <mat-paginator *ngIf="isShowPaginator" style="position: absolute; right: 2rem; background-color: transparent !important;" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20,50,100]" showFirstLastButton>
+      </mat-paginator>
+  
+    </div>
+  
+  </div>
+  
