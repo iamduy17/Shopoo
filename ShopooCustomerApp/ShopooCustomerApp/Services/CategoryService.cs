@@ -1,5 +1,6 @@
 ﻿using DataCommon.Entities;
 using DataCommon.Response;
+using DataCommon.Response.CategoryModel;
 using ShopooCustomerApp.Utils;
 using System.Text.Json;
 
@@ -14,13 +15,13 @@ namespace ShopooCustomerApp.Services
             _httpClient = httpClient;
         }
 
-        public async Task<List<Category>> GetAllCategories()
+        public async Task<GetCategoryListModel> GetAllCategories()
         {
             var categoriesResponse = await _httpClient.GetAsync($"{ParamConfig.Instance.API_URL}/api/Category");
             if (categoriesResponse.IsSuccessStatusCode)
             {
                 var categoriesJson = await categoriesResponse.Content.ReadAsStringAsync();
-                var categories = JsonSerializer.Deserialize<ResponseModel<List<Category>>>(categoriesJson, new JsonSerializerOptions
+                var categories = JsonSerializer.Deserialize<ResponseModel<GetCategoryListModel>>(categoriesJson, new JsonSerializerOptions
                 {
                     PropertyNameCaseInsensitive = true
                 });
@@ -28,7 +29,7 @@ namespace ShopooCustomerApp.Services
                 return categories?.Data;
             }
 
-            return new List<Category>();
+            return new GetCategoryListModel();
         }
     }
 }

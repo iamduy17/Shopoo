@@ -1,6 +1,6 @@
 <div class="container">
-    <div class="table-wrap panel" [ngStyle]="{ 'padding-bottom': isShowPaginator ? '50px' : 'unset'}" > 
-      <table mat-table [dataSource]="data" matSort [style.width.px]="tableWidth">
+    <div class="table-wrap panel" > 
+      <table mat-table [dataSource]="data" matSort style="width: 100%;">
         <ng-container [matColumnDef]="column.property" *ngFor="let column of Header" [sticky]="canSticky">
           <th mat-header-cell *matHeaderCellDef [style.width.px]="column.length" style="border-bottom: 0 !important" >
             <label mat-sort-header>{{column.headerText}} </label>

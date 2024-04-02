@@ -2,6 +2,7 @@
 using DataCommon.Entities;
 using DataCommon.Request;
 using DataCommon.Response;
+using DataCommon.Response.ProductModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,7 +20,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ResponseModel<List<Product>>> GetProducts()
+        public async Task<ResponseModel<GetProductListModel>> GetProducts()
         {
             try
             {
@@ -27,7 +28,7 @@ namespace Backend.Controllers
             }
             catch (Exception)
             {
-                return ResponseModel<List<Product>>.Error();
+                return ResponseModel<GetProductListModel>.Error();
             }
         }
 
@@ -45,7 +46,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("~/api/Categories/{categoryId}/Products")]
-        public async Task<ResponseModel<List<Product>>> GetProductsByCategory(Guid categoryId)
+        public async Task<ResponseModel<GetProductListModel>> GetProductsByCategory(Guid categoryId)
         {
             try
             {
@@ -53,7 +54,7 @@ namespace Backend.Controllers
             }
             catch (Exception)
             {
-                return ResponseModel<List<Product>>.Error();
+                return ResponseModel<GetProductListModel>.Error();
             }
         }
 

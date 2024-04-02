@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+
+interface NavMenu {
+  text?: string; logo?: string; url?: string;
+}
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,7 +12,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(breakpointObserver: BreakpointObserver) {
+    breakpointObserver.observe('(min-width: 1367px)').subscribe((u) => this.showMenu = u.matches);
+  }
+
+  showMenu = true;
+
+  navData: NavMenu[] = [
+    { text: 'Category', logo: 'list', url: '/category' },
+    { text: 'Product', logo: 'library_books', url: '/product' },
+  ];
 
   ngOnInit(): void {
   }

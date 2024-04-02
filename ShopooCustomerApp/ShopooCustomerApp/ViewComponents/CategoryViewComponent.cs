@@ -13,8 +13,8 @@ namespace ShopooCustomerApp.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var categories = await _categoryService.GetAllCategories();
-            return View(categories);
+            var response = await _categoryService.GetAllCategories();
+            return View(response.Categories);
         }
     }
 }

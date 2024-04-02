@@ -1,0 +1,14 @@
+.main {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        'header header'
+        'menu content';
+    /* height: calc(100vh); */
+}
+
+.content {
+    padding: 1rem;
+    position: relative;
+}

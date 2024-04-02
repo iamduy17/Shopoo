@@ -2,6 +2,7 @@
 using DataCommon.Entities;
 using DataCommon.Request;
 using DataCommon.Response;
+using DataCommon.Response.ProductModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,7 +17,7 @@ namespace Backend.Services
         }
 
         // Get all products
-        public async Task<ResponseModel<List<Product>>> GetProducts()
+        public async Task<ResponseModel<GetProductListModel>> GetProducts()
         {
             try
             {
@@ -27,7 +28,7 @@ namespace Backend.Services
                     await _context.Entry(product).Reference(p => p.Category).LoadAsync();
                 }
 
-                return ResponseModel<List<Product>>.Success(products);
+                return ResponseModel<GetProductListModel>.Success(new GetProductListModel(products));
             }
             catch (Exception)
             {
@@ -58,7 +59,7 @@ namespace Backend.Services
         }
 
         // Get related products associated with one category
-        public async Task<ResponseModel<List<Product>>> GetProductsByCategory(Guid categoryId)
+        public async Task<ResponseModel<GetProductListModel>> GetProductsByCategory(Guid categoryId)
         {
             try
             {
@@ -66,10 +67,10 @@ namespace Backend.Services
 
                 if (products == null || !products.Any())
                 {
-                    return ResponseModel<List<Product>>.NotFound();
+                    return ResponseModel<GetProductListModel>.NotFound();
                 }
 
-                return ResponseModel<List<Product>>.Success(products);
+                return ResponseModel<GetProductListModel>.Success(new GetProductListModel(products));
             }
             catch (Exception)
             {

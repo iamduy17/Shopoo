@@ -2,6 +2,7 @@
 using Backend.Services;
 using DataCommon.Entities;
 using DataCommon.Response;
+using DataCommon.Response.CategoryModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ResponseModel<List<Category>>> GetCategories()
+        public async Task<ResponseModel<GetCategoryListModel>> GetCategories()
         {
             try
             {
@@ -28,7 +29,7 @@ namespace Backend.Controllers
             }
             catch (Exception)
             {
-                return ResponseModel<List<Category>>.Error();
+                return ResponseModel<GetCategoryListModel>.Error();
             }
         }
 

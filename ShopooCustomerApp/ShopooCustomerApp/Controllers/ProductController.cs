@@ -14,14 +14,14 @@ namespace ShopooCustomerApp.Controllers
 
         public async Task<IActionResult> GetAllProducts()
         {
-            var products = await _productService.GetAllProducts();
-            return PartialView("_ProductList", products);
+            var reponse = await _productService.GetAllProducts();
+            return PartialView("_ProductList", reponse.Products);
         }
 
         public async Task<IActionResult> GetProductsByCategory(Guid categoryId)
         {
-            var products = await _productService.GetProductsByCategory(categoryId);
-            return PartialView("_ProductList", products);
+            var reponse = await _productService.GetProductsByCategory(categoryId);
+            return PartialView("_ProductList", reponse.Products);
         }
 
         public async Task<IActionResult> Detail(Guid id)

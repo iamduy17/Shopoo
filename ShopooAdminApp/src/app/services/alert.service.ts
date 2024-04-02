@@ -13,6 +13,10 @@ export class AlertService {
     this.onAlert.emit({message, timeout});
   }
 
+  showNotFound(): void{
+    this.showAlert("Không tìm thấy dữ liệu!");
+  }
+
   showError(): void{
     this.showAlert("Có lỗi trong quá trình xử lý!");
   }

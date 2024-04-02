@@ -1,6 +1,7 @@
 ﻿using Backend.Data;
 using DataCommon.Entities;
 using DataCommon.Response;
+using DataCommon.Response.CategoryModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,12 +16,12 @@ namespace Backend.Services
         }
 
         // Get all categories
-        public async Task<ResponseModel<List<Category>>> GetCategories()
+        public async Task<ResponseModel<GetCategoryListModel>> GetCategories()
         {
             try
             {
                 var response = await _context.Categories.ToListAsync();
-                return ResponseModel<List<Category>>.Success(response);
+                return ResponseModel<GetCategoryListModel>.Success(new GetCategoryListModel(response));
             }
             catch (Exception)
             {

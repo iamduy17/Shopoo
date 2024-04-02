@@ -9,10 +9,10 @@ const routes: Routes = [
   {
     path: '', component: MainLayoutComponent,
     children: [
-      { path: '', component: CategoryComponent },
+      { path: 'category', component: CategoryComponent },
       { path: 'product', component: ProductComponent },
-      { path: '', redirectTo: '/', pathMatch: 'full' },
-      { path: '**', redirectTo: '/'},  // redirect unknown route to deposit home page
+      { path: '', redirectTo: '/category', pathMatch: 'full' },
+      { path: '**', redirectTo: '/category'},  // redirect unknown route to deposit home page
     ],
   },
 ];

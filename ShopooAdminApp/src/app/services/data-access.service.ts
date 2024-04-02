@@ -45,9 +45,34 @@ export class DataAccessService {
       );
   }
 
+  put<T>(url: string, requestData: any, showLoading = true): Observable<T> {
+    const id = showLoading ? this.loading.pushLoading() : '';
+    return this.http.put<T>(url, requestData, this.httpOptions)
+      .pipe(
+        tap(() => this.loading.popLoading(id)),
+        map((r) => this.processResult<T>(r)),
+        catchError((error) => this.handleError(error, id))
+      );
+  }
+
+  delete<T>(url: string, requestData: any, showLoading = true): Observable<T> {
+    const id = showLoading ? this.loading.pushLoading() : '';
+    var deleteOptions = {
+      ...this.httpOptions,
+      body: requestData
+    };
+
+    return this.http.delete<T>(url, deleteOptions)
+      .pipe(
+        tap(() => this.loading.popLoading(id)),
+        map((r) => this.processResult<T>(r)),
+        catchError((error) => this.handleError(error, id))
+      );
+  }
+
   processResult<T>(result: any): T {
-    if(result?.returnCode == "account.not.permission") {
-      throw new HttpErrorResponse({ status: 403 });
+    if(result?.returnCode == "not.found") {
+      throw new HttpErrorResponse({ status: 404 });
     }
     return result;
   }
@@ -56,7 +81,12 @@ export class DataAccessService {
     this.loading.popLoading(id);
     if (error.error instanceof ErrorEvent) {
     } else {
-      this._alert.showAlert("Có lỗi trong quá trình xử lý!");
+      if(error.status == 404) {
+        this._alert.showAlert("Không tìm thấy!");
+      } else {
+        this._alert.showAlert("Có lỗi trong quá trình xử lý!");
+      }
+      
     }
     return throwError(error);
   }
