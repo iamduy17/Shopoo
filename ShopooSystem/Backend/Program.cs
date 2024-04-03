@@ -1,18 +1,29 @@
 using Backend.Data;
 using Backend.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Net.Http.Headers;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Enable CORS
+var allowOrigins = builder.Configuration.GetValue<string>("AllowOrigins");
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       builder =>
                       {
-                          builder.WithOrigins("http://localhost:4200");
+                          builder.WithOrigins("http://localhost:4200")
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod()
+                                  .AllowCredentials();
                       });
+    options.AddPolicy("AllowHeaders", builder =>
+    {
+        builder.WithOrigins(allowOrigins)
+                .WithHeaders(HeaderNames.ContentType, HeaderNames.Server, HeaderNames.AccessControlAllowHeaders, HeaderNames.AccessControlExposeHeaders, "x-custom-header", "x-path", "x-record-in-use", HeaderNames.ContentDisposition);
+    });
 });
 
 // Add services to the container.

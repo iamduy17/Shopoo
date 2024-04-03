@@ -14,10 +14,10 @@ export class AlertService {
   }
 
   showNotFound(): void{
-    this.showAlert("Không tìm thấy dữ liệu!");
+    this.showAlert("No data found!");
   }
 
   showError(): void{
-    this.showAlert("Có lỗi trong quá trình xử lý!");
+    this.showAlert("There are something wrong in the system. Please retry later!");
   }
 }

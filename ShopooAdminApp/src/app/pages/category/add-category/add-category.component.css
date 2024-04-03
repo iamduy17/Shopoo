@@ -1,0 +1,17 @@
+.d-dialog {
+    width: 500px;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.d-dialog-buttons {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.d-button-right {
+    margin-left: 10px;
+}

@@ -5,6 +5,12 @@
     --nav-active-background: #ffffff;
 }
 
+.logo-text {
+    color: rgba(13, 110, 253, 1);
+    font-weight: 700 !important;
+    font-size: 1.25rem;
+}
+
 .menu-button {
     position: fixed;
     left: 0.4rem;
@@ -19,6 +25,7 @@
     left: -22rem;
     position: fixed;
     transition: left ease 0.2s, width ease 0.2s;
+    margin-top: 28px;
 }
 
 .nav-wrap.show {

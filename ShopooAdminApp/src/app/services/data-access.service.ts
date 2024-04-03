@@ -82,9 +82,9 @@ export class DataAccessService {
     if (error.error instanceof ErrorEvent) {
     } else {
       if(error.status == 404) {
-        this._alert.showAlert("Không tìm thấy!");
+        this._alert.showAlert("Not found!");
       } else {
-        this._alert.showAlert("Có lỗi trong quá trình xử lý!");
+        this._alert.showAlert("There are something wrong in the system. Please retry later!");
       }
       
     }

@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './materials/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
@@ -13,6 +14,7 @@ import { NavBarComponent } from './layouts/nav-bar/nav-bar.component';
 import { TableComponent } from './components/table/table.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { ProductComponent } from './pages/product/product.component';
+import { AddCategoryComponent } from './pages/category/add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -23,14 +25,16 @@ import { ProductComponent } from './pages/product/product.component';
     NavBarComponent,
     TableComponent,
     CategoryComponent,
-    ProductComponent
+    ProductComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

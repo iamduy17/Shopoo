@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 * {
@@ -9,5 +10,220 @@
 
 body {
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
-    overflow: hidden;
+    overflow-x: hidden;
 }
+
+.content-container {
+    margin-top: 50px;
+}
+
+.custom-dialog {
+    max-width: unset!important
+  }
+  
+  @media (max-width: 599.9px) {
+    .custom-dialog {
+        width:100%;
+        position: absolute!important;
+        top: 0;
+        left: 0
+    }
+  }
+  
+  .custom-dialog .mat-dialog-container,.custom-dialog .mat-dialog-title {
+    padding: 0
+  }
+  
+  .custom-dialog .mat-dialog-content {
+    margin: 0;
+    padding: 0;
+    width: 100%
+  }
+  
+  @media (max-width: 599.9px) {
+    .custom-dialog .mat-dialog-content {
+        max-height:calc(100vh - 200px)
+    }
+  }
+  
+  .custom-dialog .mat-dialog-actions {
+    margin: 0;
+    padding: 0
+  }
+  
+  .custom-dialog .d-dialog {
+    box-sizing: border-box
+  }
+  
+  .custom-dialog .d-dialog .dialog-header {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    overflow: auto;
+    text-align: center;
+    margin-bottom: 0
+  }
+  
+  @media (min-width: 600px) {
+    .custom-dialog .d-dialog .dialog-header {
+        text-align:unset
+    }
+  }
+  
+  .custom-dialog .d-dialog .dialog-header .s-left {
+    white-space: pre
+  }
+  
+  .custom-dialog .d-dialog .dialog-header .s-float-right {
+    float: unset
+  }
+  
+  @media (min-width: 600px) {
+    .custom-dialog .d-dialog .dialog-header .s-float-right {
+        float:right
+    }
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content {
+    background-color: #fafafa;
+    padding: 1rem
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .s-title-card {
+    font-weight: 500
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .m-card {
+    margin-top: .5rem;
+    margin-bottom: 1rem
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .d-row {
+    display: flex;
+    flex-wrap: wrap
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .d-row .d-label {
+    flex: 1 0 39%;
+    text-align: start;
+    padding: 1rem;
+    padding-left: 1.5rem;
+    box-sizing: border-box;
+    font-weight: 500;
+    align-self: center
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .d-row .d-value {
+    flex: 1 0 61%;
+    padding: 1rem;
+    box-sizing: border-box;
+    word-break: break-all;
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .d-row .d-import {
+    margin-left: 1rem;
+    margin-right: 1rem
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .d-row .label-import {
+    margin: .5rem 1rem
+  }
+  
+  .custom-dialog .d-dialog .d-dialog-content .d-row .value-import {
+    flex: 1;
+    margin: 0 1rem
+  }
+  
+  .custom-dialog .d-dialog .dialog-action {
+    border-top: 1px solid var(--input-border-color);
+    padding: 0 1rem
+  }
+  
+  .custom-dialog .d-dialog .dialog-action .d-dialog-buttons {
+    display: flex;
+    width: 100%
+  }
+  
+  .custom-dialog .d-dialog .dialog-action .d-dialog-buttons .btn-close {
+    max-width: 33%
+  }
+  
+  .custom-dialog .d-dialog .dialog-action .d-dialog-buttons .d-button-right {
+    max-width: 66%;
+    margin-left: auto
+  }
+  
+  .custom-dialog .d-dialog .dialog-action .d-dialog-buttons .d-button-right .btn-content {
+    max-width: 46%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+  }
+  
+  @media (min-width: 600px) {
+    .custom-dialog .d-dialog .dialog-action .d-dialog-buttons .d-button-right .btn-content {
+        max-width:unset;
+        overflow: unset;
+        text-overflow: unset;
+        white-space: unset
+    }
+  }
+  
+  .custom-dialog .d-dialog .dialog-action .d-dialog-buttons .d-button-right .btn-content+.btn-content {
+    margin-left: 1rem
+  }
+  
+  .custom-dialog label {
+    font-size: .9rem;
+    font-weight: 500;
+    padding: .4rem 0
+  }
+  
+  .custom-dialog .mat-form-field{
+    width: 100%
+  }
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper {
+    padding-bottom: 0;
+    height: 100%;
+  }
+
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper .mat-form-field-flex {
+    border-radius: 5px;
+    padding: 0;
+    font-size: 1rem;
+    background-color: var(--input-background);
+    border: 1px solid var(--input-border-color);
+    color: var(--text-color);
+    box-shadow: 0 0;
+    height: 100%;
+    display: flex;
+    align-items: center
+  }
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper .mat-form-field-flex:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(0,123,255,.25)
+  }
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-select-arrow-wrapper {
+    transform: translate(0)
+  }
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding: .6rem;
+    border-top: 0;
+    width: 30px;
+  }
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-suffix .mat-icon-button {
+    height: 100%
+  }
+  
+  .custom-dialog .mat-form-field .mat-form-field-wrapper .mat-form-field-underline {
+    width: 0
+  }

@@ -1,5 +1,10 @@
-<div class="fade-in">
+<div class="content-container">
     <h2>Category Management</h2>
+
+    <button mat-raised-button mat-button color="primary" style="margin-top: 1rem" (click)="addCategory()">
+      <mat-icon>add</mat-icon>
+      Add Category
+    </button>
   
     <div style="margin-top: 1rem;">
       <app-table [Data]="listData" [Template]="listHeader"></app-table>

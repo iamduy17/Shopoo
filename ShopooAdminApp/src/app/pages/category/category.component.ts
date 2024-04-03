@@ -1,19 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { TableTemplate } from 'src/app/components/table/table.component';
 import { CategoryModel } from 'src/app/models/category/response/category';
 import { AlertService } from 'src/app/services/alert.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styleUrls: ['./category.component.css'],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ]
 })
 export class CategoryComponent implements OnInit {
 
   constructor(
     private _alert: AlertService,
-    private _categoryService: CategoryService
+    private _categoryService: CategoryService,
+    private _dialog: MatDialog,
+    private _dialogRefAdd: MatDialogRef<AddCategoryComponent>
   ) { }
 
   listHeader?: TableTemplate[];
@@ -48,6 +58,19 @@ export class CategoryComponent implements OnInit {
         default:
           this._alert.showError();
           break;    
+      }
+    })
+  }
+
+  addCategory(): void {
+    this._dialogRefAdd = this._dialog.open(AddCategoryComponent, {
+      panelClass: ['light-theme', 'custom-class'],
+      autoFocus: true
+    });
+
+    this._dialogRefAdd.afterClosed().subscribe((result: boolean) => {
+      if(result) {
+        this.getCategoryList();
       }
     })
   }
