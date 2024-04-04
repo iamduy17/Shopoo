@@ -5,6 +5,7 @@ import { CategoryModel } from 'src/app/models/category/response/category';
 import { AlertService } from 'src/app/services/alert.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { CategoryDetailComponent } from './category-detail/category-detail.component';
 
 @Component({
   selector: 'app-category',
@@ -23,7 +24,8 @@ export class CategoryComponent implements OnInit {
     private _alert: AlertService,
     private _categoryService: CategoryService,
     private _dialog: MatDialog,
-    private _dialogRefAdd: MatDialogRef<AddCategoryComponent>
+    private _dialogRefAdd: MatDialogRef<AddCategoryComponent>,
+    private _dialogRefDetail: MatDialogRef<CategoryDetailComponent>
   ) { }
 
   listHeader?: TableTemplate[];
@@ -39,8 +41,8 @@ export class CategoryComponent implements OnInit {
 
   setHeaderTable(): void {
     this.listHeader = [
-      { headerText: 'STT', property: 'no', length: 30 },
-      { headerText: 'Category Name', property: 'name', length: 150 },
+      { headerText: 'No', property: 'no', length: 30 },
+      { headerText: 'Category Name', property: 'name', length: 150, onClick: this.showDetail.bind(this) },
       { headerText: 'Description', property: 'description', length: 150  },
     ];
   }
@@ -64,11 +66,25 @@ export class CategoryComponent implements OnInit {
 
   addCategory(): void {
     this._dialogRefAdd = this._dialog.open(AddCategoryComponent, {
-      panelClass: ['light-theme', 'custom-class'],
+      panelClass: ['light-theme'],
       autoFocus: true
     });
 
     this._dialogRefAdd.afterClosed().subscribe((result: boolean) => {
+      if(result) {
+        this.getCategoryList();
+      }
+    })
+  }
+
+  showDetail(column: any, data: CategoryModel): void {
+    this._dialogRefDetail = this._dialog.open(CategoryDetailComponent, {
+      data: data,
+      panelClass: ['light-theme'],
+      autoFocus: true
+    });
+
+    this._dialogRefDetail.afterClosed().subscribe((result: boolean) => {
       if(result) {
         this.getCategoryList();
       }

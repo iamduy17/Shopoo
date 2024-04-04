@@ -11,7 +11,7 @@
             [style]="cellStyle(column,row)">
             <button class="cell-click"  mat-button *ngIf='column.onClick' (click)="cellClick(column,row)"
               [ngClass]="{'align-right': column.align == 1,'align-center': column.align == 2, 'align-left': 3}"
-              style="overflow-wrap: anywhere !important; white-space: normal; user-select: auto; padding: 0!important"
+              style="overflow-wrap: anywhere !important; white-space: normal; user-select: auto; padding: 0!important; color:rgb(76, 76, 251)"
               >
               {{formatValue(column.format,row[column.property])}}
             </button>

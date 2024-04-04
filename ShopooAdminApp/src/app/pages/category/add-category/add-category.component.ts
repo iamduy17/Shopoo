@@ -24,10 +24,10 @@ export class AddCategoryComponent implements OnInit {
   }
 
   addCategory(): void {
-    const isValid = this.isValidData(this.addModel);
-    if(!isValid.valid) return;
+    const req = this.isValidData(this.addModel);
+    if(!req.valid) return;
 
-    this._categoryService.addCategory(this.addModel).subscribe(res => {
+    this._categoryService.addCategory(req.data).subscribe(res => {
       switch(res.returnCode) {
         case "success":
           this._alert.showAlert("Adding new category successfully");

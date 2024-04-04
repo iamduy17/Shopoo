@@ -55,14 +55,10 @@ export class DataAccessService {
       );
   }
 
-  delete<T>(url: string, requestData: any, showLoading = true): Observable<T> {
+  delete<T>(url: string, showLoading = true): Observable<T> {
     const id = showLoading ? this.loading.pushLoading() : '';
-    var deleteOptions = {
-      ...this.httpOptions,
-      body: requestData
-    };
 
-    return this.http.delete<T>(url, deleteOptions)
+    return this.http.delete<T>(url, this.httpOptions)
       .pipe(
         tap(() => this.loading.popLoading(id)),
         map((r) => this.processResult<T>(r)),

@@ -15,6 +15,8 @@ import { TableComponent } from './components/table/table.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { ProductComponent } from './pages/product/product.component';
 import { AddCategoryComponent } from './pages/category/add-category/add-category.component';
+import { CategoryDetailComponent } from './pages/category/category-detail/category-detail.component';
+import { ConfirmDeleteCategoryComponent } from './pages/category/confirm-delete-category/confirm-delete-category.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { AddCategoryComponent } from './pages/category/add-category/add-category
     TableComponent,
     CategoryComponent,
     ProductComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    CategoryDetailComponent,
+    ConfirmDeleteCategoryComponent
   ],
   imports: [
     BrowserModule,

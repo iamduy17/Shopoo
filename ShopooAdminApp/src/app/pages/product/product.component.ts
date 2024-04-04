@@ -29,7 +29,7 @@ export class ProductComponent implements OnInit {
 
   setHeaderTable(): void {
     this.listHeader = [
-      { headerText: 'STT', property: 'no', length: 30 },
+      { headerText: 'No', property: 'no', length: 30 },
       { headerText: 'Product Name', property: 'name', length: 150 },
       { headerText: 'Description', property: 'description', length: 150  },
       { headerText: 'Price', property: 'price', length: 100  },

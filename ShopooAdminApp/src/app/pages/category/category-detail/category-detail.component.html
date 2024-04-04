@@ -1,0 +1,46 @@
+<div class="d-dialog">
+    <h3 mat-dialog-title>
+        <span>Category Detail</span>
+    </h3>
+    <mat-dialog-content>
+        <div class="d-dialog-content">
+            <div class="d-row">
+                <div class="d-label">
+                    Category Name <span style="color: red">(*)</span>:
+                </div>
+                <div class="d-value">
+                    <mat-form-field class="fullwidth">
+                        <input matInput [(ngModel)]="updateModel.name" maxlength="32">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="d-row">
+                <div class="d-label">
+                    Description:
+                </div>
+                <div class="d-value">
+                    <mat-form-field class="fullwidth">
+                        <input matInput [(ngModel)]="updateModel.description" maxlength="100">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="dialog-action">
+        <div class="d-dialog-buttons">
+          <button mat-button mat-raised-button color="warning" mat-dialog-close>Close</button>
+    
+          <div class="d-button-right">
+            <button mat-raised-button color="primary" [disabled]="isUpdateDisable" (click)="updateCategory()">
+              <mat-icon>edit</mat-icon>
+              Update
+            </button>
+            <button mat-raised-button color="warn" (click)="confirmDeleteCategory()" 
+            style="margin-left: 10px;">
+                <mat-icon>delete</mat-icon>
+                Delete
+              </button>
+          </div>
+        </div>
+      </mat-dialog-actions>
+</div>
