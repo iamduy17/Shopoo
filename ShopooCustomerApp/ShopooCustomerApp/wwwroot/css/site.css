@@ -78,3 +78,15 @@ body {
     bottom: 10px;
     background: currentColor
 }
+
+.card-img-top {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.list-group-item {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -4,6 +4,10 @@ import * as global from "../globals";
 import { Observable } from 'rxjs';
 import { ResponseModel } from '../models/reponse-model';
 import { GetProductListModel } from '../models/product/response/get-product-list';
+import { AddProductRequestModel } from '../models/product/request/add-product-request';
+import { AddProductResponseModel } from '../models/product/response/add-product-response';
+import { UpdateProductRequestModel } from '../models/product/request/update-product-request';
+import { UpdateProductResponseModel } from '../models/product/response/update-product-response';
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +23,9 @@ export class ProductService {
   getProductList(): Observable<ResponseModel<GetProductListModel>> {
     return this._dao.get(this.url);
   }
+
+  addProduct(request: AddProductRequestModel): Observable<ResponseModel<AddProductResponseModel>> {
+    return this._dao.post(this.url, request);
+  }
+
 }

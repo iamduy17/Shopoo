@@ -1,19 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ImageUploadComponent } from 'src/app/components/image-upload/image-upload.component';
 import { TableTemplate } from 'src/app/components/table/table.component';
+import { ImageFileResult } from 'src/app/models/common/image-file-result';
 import { ProductModel } from 'src/app/models/product/response/product';
 import { AlertService } from 'src/app/services/alert.service';
 import { ProductService } from 'src/app/services/product.service';
+import { AddProductComponent } from './add-product/add-product.component';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
-  styleUrls: ['./product.component.css']
+  styleUrls: ['./product.component.css'],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    }
+  ]
 })
 export class ProductComponent implements OnInit {
 
   constructor(
     private _alert: AlertService,
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _dialog: MatDialog,
+    private _dialogRefAdd: MatDialogRef<AddProductComponent>
   ) { }
 
   listHeader?: TableTemplate[];
@@ -52,6 +64,19 @@ export class ProductComponent implements OnInit {
         default:
           this._alert.showError();
           break;    
+      }
+    })
+  }
+
+  addProduct(): void {
+    this._dialogRefAdd = this._dialog.open(AddProductComponent, {
+      panelClass: ['light-theme'],
+      autoFocus: true
+    });
+
+    this._dialogRefAdd.afterClosed().subscribe((result: boolean) => {
+      if(result) {
+        this.getProductList();
       }
     })
   }

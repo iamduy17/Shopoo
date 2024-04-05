@@ -19,6 +19,10 @@ export class AddCategoryComponent implements OnInit {
 
   addModel!: AddCategoryRequestModel;
 
+  get isAddDisable(): boolean {
+    return !this.addModel.name;
+  }
+
   ngOnInit(): void {
     this.addModel = new AddCategoryRequestModel();
   }
@@ -44,12 +48,12 @@ export class AddCategoryComponent implements OnInit {
   isValidData(req: AddCategoryRequestModel): { valid: boolean, data: AddCategoryRequestModel } {
     const request = {...req};
 
-    if(!req.name) {
-      this._alert.showAlert("Category Name is empty!");
+    if(!request.name) {
+      this._alert.showAlert("Category Name is required!");
 
       return { data: request, valid: false};
     }
 
-    return { data: req, valid: true };
+    return { data: request, valid: true };
   }
 }

@@ -1,0 +1,73 @@
+.drop-file-input_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+.drop-file-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #3e54ac !important;
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.drop-file-input input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.drop-file-input:hover,
+.drop-file-input.dragover {
+  opacity: 0.6;
+}
+
+.drop-file-input__label {
+  text-align: center;
+  color: #fff;
+  font-weight: 600;
+}
+
+.drop-file-input__label p:first-child {
+    font-size: 28px;
+    color: #565555;
+}
+
+.drop-file-input__label p {
+    margin-bottom: 10px;
+}
+
+.drop-file-preview {
+  width: 90%;
+}
+
+.drop-file-preview__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-file-preview__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.drop-file-preview__item img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}

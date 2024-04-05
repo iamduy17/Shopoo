@@ -31,7 +31,7 @@
           <button mat-button mat-raised-button color="warning" mat-dialog-close>Close</button>
     
           <div class="d-button-right">
-            <button mat-raised-button color="primary" (click)="addCategory()">
+            <button mat-raised-button color="primary" [disabled]="isAddDisable" (click)="addCategory()">
               <mat-icon>add</mat-icon>
               Add
             </button>

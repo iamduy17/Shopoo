@@ -18,7 +18,7 @@ namespace DataCommon.Response.ProductModel
 
         public GetProductListModel(List<Product> reponse) 
         {
-            Products = reponse;
+            Products = reponse.OrderByDescending(x => x.CreatedDate).ToList();
         }
     }
 }

@@ -1,6 +1,7 @@
 import { CategoryModel } from "../../category/response/category";
 
 export class ProductModel {
+    public id!: string;
     public name!: string | null;
     public description!: string | null;
     public price!: number | null;
