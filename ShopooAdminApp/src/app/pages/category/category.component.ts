@@ -74,7 +74,7 @@ export class CategoryComponent implements OnInit {
       if(result) {
         this.getCategoryList();
       }
-    })
+    });
   }
 
   showDetail(column: any, data: CategoryModel): void {
@@ -88,7 +88,7 @@ export class CategoryComponent implements OnInit {
       if(result) {
         this.getCategoryList();
       }
-    })
+    });
   }
 
 }

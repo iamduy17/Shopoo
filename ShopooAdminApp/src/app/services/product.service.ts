@@ -28,4 +28,11 @@ export class ProductService {
     return this._dao.post(this.url, request);
   }
 
+  updateProduct(request: UpdateProductRequestModel): Observable<ResponseModel<UpdateProductResponseModel>> {
+    return this._dao.put(`${this.url}/${request.id}`, request.product);
+  }
+
+  deleteProduct(id: string): Observable<ResponseModel<UpdateProductResponseModel>> {
+    return this._dao.delete(`${this.url}/${id}`);
+  }
 }

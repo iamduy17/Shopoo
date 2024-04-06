@@ -7,6 +7,7 @@ import { ProductModel } from 'src/app/models/product/response/product';
 import { AlertService } from 'src/app/services/alert.service';
 import { ProductService } from 'src/app/services/product.service';
 import { AddProductComponent } from './add-product/add-product.component';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product',
@@ -25,6 +26,7 @@ export class ProductComponent implements OnInit {
     private _alert: AlertService,
     private _productService: ProductService,
     private _dialog: MatDialog,
+    private _dialogRefDetail: MatDialogRef<ProductDetailComponent>,
     private _dialogRefAdd: MatDialogRef<AddProductComponent>
   ) { }
 
@@ -42,7 +44,7 @@ export class ProductComponent implements OnInit {
   setHeaderTable(): void {
     this.listHeader = [
       { headerText: 'No', property: 'no', length: 30 },
-      { headerText: 'Product Name', property: 'name', length: 150 },
+      { headerText: 'Product Name', property: 'name', length: 150, onClick: this.showDetail.bind(this) },
       { headerText: 'Description', property: 'description', length: 150  },
       { headerText: 'Price', property: 'price', length: 100  },
       { headerText: 'Created Date', property: 'createdDate', length: 150  },
@@ -65,7 +67,7 @@ export class ProductComponent implements OnInit {
           this._alert.showError();
           break;    
       }
-    })
+    });
   }
 
   addProduct(): void {
@@ -78,7 +80,21 @@ export class ProductComponent implements OnInit {
       if(result) {
         this.getProductList();
       }
-    })
+    });
+  }
+
+  showDetail(column: any, data: ProductModel): void {
+    this._dialogRefDetail = this._dialog.open(ProductDetailComponent, {
+      data: data,
+      panelClass: ['light-theme'],
+      autoFocus: true
+    });
+
+    this._dialogRefDetail.afterClosed().subscribe((result: boolean) => {
+      if(result) {
+        this.getProductList();
+      }
+    });
   }
 
 }

@@ -24,6 +24,7 @@ import { AddProductComponent } from './pages/product/add-product/add-product.com
 import { ProductDetailComponent } from './pages/product/product-detail/product-detail.component';
 
 import { ImageUploaderDirective } from './directives/image-uploader.directive';
+import { ConfirmDeleteProductComponent } from './pages/product/confirm-delete-product/confirm-delete-product.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ImageUploaderDirective } from './directives/image-uploader.directive';
     AddProductComponent,
     ProductDetailComponent,
     ImageUploaderDirective,
-    ImageUploadComponent
+    ImageUploadComponent,
+    ConfirmDeleteProductComponent
   ],
   imports: [
     BrowserModule,

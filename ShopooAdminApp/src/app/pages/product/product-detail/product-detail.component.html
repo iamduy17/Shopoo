@@ -1,1 +1,84 @@
-<p>product-detail works!</p>
+<div class="d-dialog">
+    <h3 mat-dialog-title>
+        <span>Product Detail</span>
+    </h3>
+    <mat-dialog-content>
+        <div class="d-dialog-content">
+            <div class="d-row">
+                <div class="d-label">
+                    Product Name <span style="color: red">(*)</span>:
+                </div>
+                <div class="d-value">
+                    <mat-form-field class="fullwidth">
+                        <input matInput [(ngModel)]="updateModel.name" maxlength="32">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="d-row">
+                <div class="d-label">
+                    Description:
+                </div>
+                <div class="d-value">
+                    <mat-form-field class="fullwidth">
+                        <input matInput [(ngModel)]="updateModel.description" maxlength="100">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="d-row">
+                <div class="d-label">
+                    Price <span style="color: red">(*)</span>:
+                </div>
+                <div class="d-value">
+                    <mat-form-field class="fullwidth">
+                        <input type="number" matInput [(ngModel)]="updateModel.price" maxlength="10">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="d-row">
+                <div class="d-label">
+                    Category <span style="color: red">(*)</span>:
+                </div>
+                <div class="d-value" style="margin-top: 10px;">
+                    <mat-form-field class="fullwidth" appearance="fill">
+                        <mat-select [(value)]="updateModel.categoryId">
+                            <mat-option *ngFor="let item of listCategory" [value]="item.value">{{item.text}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>                
+                </div>
+            </div>
+            <div class="d-row">
+                <div class="d-label">
+                    Image <span style="color: red">(*)</span>:
+                </div>
+                <div class="d-value image-upload" style="margin-top: 10px;">
+                    <img class="image-preview" *ngIf="!imageFile && updateModel.imageURL" [src]="updateModel.imageURL" [alt]="updateModel.name"/>
+                    <div *ngIf="imageFile">
+                        <mat-form-field class="fullwidth">
+                            <input matInput value="{{imageFile.name}}">                        
+                        </mat-form-field>
+                    </div>
+                    <button mat-fab color="warn" (click)="openImageUploader()">
+                        <mat-icon>open_in_browser</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="dialog-action">
+        <div class="d-dialog-buttons">
+          <button mat-button mat-raised-button color="warning" mat-dialog-close>Close</button>
+    
+          <div class="d-button-right">
+            <button mat-raised-button color="primary" [disabled]="isUpdateDisable" (click)="updateProduct()">
+                <mat-icon>edit</mat-icon>
+                Update
+              </button>
+              <button mat-raised-button color="warn" (click)="confirmDeleteProduct()" 
+              style="margin-left: 10px;">
+                  <mat-icon>delete</mat-icon>
+                  Delete
+              </button>
+          </div>
+        </div>
+    </mat-dialog-actions>
+</div>

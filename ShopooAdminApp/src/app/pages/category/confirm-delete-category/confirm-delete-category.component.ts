@@ -25,14 +25,14 @@ export class ConfirmDeleteCategoryComponent implements OnInit {
     this._categoryService.deleteCategory(this.data.id).subscribe(res => {
       switch(res.returnCode) {
         case "success":
-          this._alert.showAlert(`Delete category ${this.data.name} successfully`);
+          this._alert.showAlert(`Delete category ${this.data.name} successfully!`);
           this._dialogRef.close(true);
           break;
         default:
           this._alert.showError();
           break;
       }
-    })
+    });
   }
 
 }

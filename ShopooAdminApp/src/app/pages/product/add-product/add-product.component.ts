@@ -35,7 +35,7 @@ export class AddProductComponent implements OnInit {
     this.addModel = new AddProductRequestModel();
     setTimeout(() => {
       this.getCategoryList();
-    })
+    });
   }
 
   getCategoryList(): void {
@@ -61,7 +61,6 @@ export class AddProductComponent implements OnInit {
 
     this._dialogRefImageUpload.afterClosed().subscribe((result: ImageFileResult) => {
       if(result.result) {
-        console.log(result.fileResult.url);
         this.addModel.imageURL = result.fileResult.url as string;
         this.imageFile = result.fileResult.file;
       }
@@ -75,7 +74,7 @@ export class AddProductComponent implements OnInit {
     this._productService.addProduct(req.data).subscribe(res => {
       switch(res.returnCode) {
         case "success":
-          this._alert.showAlert("Adding new product successfully");
+          this._alert.showAlert("Adding new product successfully!");
           this._dialogRefAdd.close(true);
           break;
         default:

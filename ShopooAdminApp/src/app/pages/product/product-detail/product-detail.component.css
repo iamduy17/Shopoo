@@ -1,0 +1,16 @@
+.image-upload {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.image-upload button {
+    margin-left: 10px;
+}
+
+.image-preview {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}

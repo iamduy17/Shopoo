@@ -91,6 +91,7 @@ namespace Backend.Services
 
                 var product = new Product(productRequest, category);
                 product.CreatedDate = DateTime.Now.ToString();
+                product.RatingPoint = 0;
 
                 _context.Products.Add(product);
                 await _context.SaveChangesAsync();

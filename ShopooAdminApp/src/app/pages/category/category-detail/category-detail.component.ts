@@ -40,15 +40,14 @@ export class CategoryDetailComponent implements OnInit {
     this._categoryService.updateCategory(request).subscribe((res) => {
       switch(res.returnCode) {
         case "success":
-          this._alert.showAlert("Updating category successfully");
+          this._alert.showAlert("Updating category successfully!");
           this._dialogRefDetail.close(true);
           break;
         default:
           this._alert.showError();
           break;
       }
-    })
-
+    });
   }
 
   isValidData(req: CategoryModel): { data: CategoryModel, valid: boolean } {
@@ -73,7 +72,7 @@ export class CategoryDetailComponent implements OnInit {
       if(res) {
         this._dialogRefDetail.close(true);
       }
-    })
+    });
   }
 
 }

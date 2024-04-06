@@ -38,7 +38,7 @@
                 <div class="d-label">
                     Category <span style="color: red">(*)</span>:
                 </div>
-                <div class="d-value">
+                <div class="d-value" style="margin-top: 10px;">
                     <mat-form-field class="fullwidth" appearance="fill">
                         <mat-select [(value)]="addModel.categoryId">
                             <mat-option *ngFor="let item of listCategory" [value]="item.value">{{item.text}}</mat-option>
@@ -50,7 +50,7 @@
                 <div class="d-label">
                     Image <span style="color: red">(*)</span>:
                 </div>
-                <div class="d-value image-upload">
+                <div class="d-value image-upload" style="margin-top: 10px;">
                     <p *ngIf="!imageFile">No image is chose</p>
                     <div *ngIf="imageFile">
                         <mat-form-field class="fullwidth">

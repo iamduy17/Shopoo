@@ -1,0 +1,26 @@
+<div class="d-dialog">
+    <h3 mat-dialog-title>
+        <span>Delete product confirmation</span>
+    </h3>
+    <mat-dialog-content>
+        <div class="d-dialog-content">
+            <div class="d-row">
+                <div class="d-value" style="text-align: center;">
+                    Product <span style="font-weight: 600;">{{data.name}}</span>
+                    will be deleted. Are you sure?
+                </div>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions class="dialog-action">
+        <div class="d-dialog-buttons">
+          <button mat-button mat-raised-button color="warning" mat-dialog-close>No</button>
+    
+          <div class="d-button-right">
+            <button mat-raised-button color="primary" (click)="deleteProduct()">
+              Yes
+            </button>
+          </div>
+        </div>
+      </mat-dialog-actions>
+</div>

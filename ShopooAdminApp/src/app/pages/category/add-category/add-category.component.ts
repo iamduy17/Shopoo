@@ -34,7 +34,7 @@ export class AddCategoryComponent implements OnInit {
     this._categoryService.addCategory(req.data).subscribe(res => {
       switch(res.returnCode) {
         case "success":
-          this._alert.showAlert("Adding new category successfully");
+          this._alert.showAlert("Adding new category successfully!");
           this._dialogRef.close(true);
           break;
         default:
