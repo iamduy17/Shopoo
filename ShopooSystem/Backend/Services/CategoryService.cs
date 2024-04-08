@@ -1,4 +1,5 @@
 ﻿using Backend.Data;
+using Backend.Interfaces;
 using DataCommon.Entities;
 using DataCommon.Response;
 using DataCommon.Response.CategoryModel;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Services
 {
-    public class CategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly DBContext _context;
         public CategoryService(DBContext context)

@@ -1,4 +1,5 @@
 ﻿using Backend.Data;
+using Backend.Interfaces;
 using DataCommon.Entities;
 using DataCommon.Request;
 using DataCommon.Response;
@@ -8,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Services
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
         private readonly DBContext _context;
         public ProductService(DBContext context)

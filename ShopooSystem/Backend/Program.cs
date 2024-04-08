@@ -1,4 +1,5 @@
 using Backend.Data;
+using Backend.Interfaces;
 using Backend.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,8 +34,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<CategoryService>();
-builder.Services.AddScoped<ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddDbContext<DBContext>(opt => opt.UseSqlServer(
     builder.Configuration.GetConnectionString("AppDB")
 ));

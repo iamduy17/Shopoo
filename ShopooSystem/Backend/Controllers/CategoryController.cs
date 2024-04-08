@@ -1,4 +1,5 @@
 ﻿using Backend.Data;
+using Backend.Interfaces;
 using Backend.Services;
 using DataCommon.Entities;
 using DataCommon.Response;
@@ -13,9 +14,9 @@ namespace Backend.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryService _categoryService;
+        private readonly ICategoryService _categoryService;
 
-        public CategoryController(CategoryService categoryService)
+        public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
