@@ -5,10 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddHttpClient<ProductService>();
-builder.Services.AddScoped<ProductService>();
-builder.Services.AddHttpClient<CategoryService>();
-builder.Services.AddTransient<CategoryService>();
+builder.Services.AddHttpClient<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddHttpClient<ICategoryService, CategoryService>();
+builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<CategoryViewComponent>();
 
 var app = builder.Build();

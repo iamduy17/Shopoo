@@ -115,6 +115,13 @@ namespace Backend.Services
                     return ResponseModel<Product>.BadRequest();
                 }
 
+                // Find the existing product
+                var product = await _context.Products.FindAsync(id);
+                if (product == null)
+                {
+                    return ResponseModel<Product>.BadRequest();
+                }
+
                 // Find Category of Product and Update Information
                 var category = await _context.Categories.FindAsync(productRequest.CategoryId);
                 if (category == null)
@@ -122,10 +129,16 @@ namespace Backend.Services
                     return ResponseModel<Product>.BadRequest();
                 }
 
-                var product = new Product(productRequest, category);
+                product.Name = productRequest.Name;
+                product.Description = productRequest.Description;
+                product.Price = productRequest.Price;
+                product.ImageURL = productRequest.ImageURL;
+                product.CreatedDate = product.CreatedDate;
+                product.CategoryId = product.CategoryId;
+                product.Category = category;
                 product.UpdatedDate = DateTime.Now.ToString();
 
-                _context.Entry(product).State = EntityState.Modified;
+                // _context.Entry(product).State = EntityState.Modified;
 
                 try
                 {

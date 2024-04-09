@@ -5,8 +5,8 @@ namespace ShopooCustomerApp.ViewComponents
 {
     public class CategoryViewComponent : ViewComponent
     {
-        private readonly CategoryService _categoryService;
-        public CategoryViewComponent(CategoryService categoryService)
+        private readonly ICategoryService _categoryService;
+        public CategoryViewComponent(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }

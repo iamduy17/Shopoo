@@ -97,7 +97,7 @@ namespace UnitTest.Backend.ControllerTest
             var productId = new Guid("3fa81f64-5717-4562-b3fc-2c963f66afa6");
             var product = new Product
             {
-                Id = new Guid("3fa81f64-5717-4562-b3fc-2c963f66afa6"),
+                Id = productId,
                 Name = "product1",
                 Description = "",
                 Price = 11110,
@@ -164,7 +164,7 @@ namespace UnitTest.Backend.ControllerTest
                         CreatedDate = "3/27/2024 10:06:58 PM",
                         UpdatedDate = null,
                         RatingPoint = 0,
-                        CategoryId = new Guid("3fa85f64-5717-4572-b3fc-2c963f66afa6"),
+                        CategoryId = categoryId,
                         Category = new Category()
                         {
                             Name = "category1",

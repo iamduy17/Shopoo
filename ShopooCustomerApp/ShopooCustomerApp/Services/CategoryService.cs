@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace ShopooCustomerApp.Services
 {
-    public class CategoryService
+    public class CategoryService : ICategoryService
     {
         private readonly HttpClient _httpClient;
 
